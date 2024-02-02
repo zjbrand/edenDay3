@@ -1,0 +1,40 @@
+#端口和工程访问路径配置
+server:
+  port: 8099
+  servlet:
+    context-path: /eden-thymeleaf    
+    
+#spring配置  datasource数据源  thymeleaf模板引擎
+spring:
+  thymeleaf:
+    prefix:  classpath:/templates/    
+    suffix:  .html  #指定后缀
+    cache:  false   #是否开启缓存，开发中推荐使用false，可以立即生效
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url:  jdbc:mysql://localhost:3306/eden-thymeleaf?characterEncoding=UTF-8
+    username: root
+    password: 5312448th
+
+  web:
+    resources:
+      static-locations: classpath:/static/,file:${file.upload.dir}
+
+
+#mybatis配置
+mybatis:
+  mapper-locations:  classpath:com/eden/mapper/*.xml
+  type-aliases-package: com.eden.entity
+
+#日志配置
+logging:
+  level:
+    root: info
+    '[com.eden]':  debug 
+    
+#指定文件上传位置
+file:
+  upload:
+     dir: C:\\2022-09\\workspace\\code\\eden-thymeleaf\\photos
+
